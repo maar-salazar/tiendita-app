@@ -4,7 +4,7 @@ from datetime import datetime
 from streamlit_gsheets import GSheetsConnection
 
 st.set_page_config(page_title="Control de Tiendita", layout="centered")
-st.title("🏪 Control de Inventario y Ventas (Nube)")
+st.title("Control de ventas e inventario")
 
 # Establecer la conexión con Google Sheets
 conn = st.connection("gsheets", type=GSheetsConnection)
@@ -42,10 +42,10 @@ def obtener_existencia_actual(inventario, ventas):
     df_inv["Existencia Actual"] = existencias
     return df_inv
 
-tab1, tab2 = st.tabs(["🛒 Registrar Ventas", "📦 Inventario y Precios"])
+tab1, tab2 = st.tabs(["Registrar ventas", " Inventario y precios"])
 
 with tab1:
-    st.header("Registrar una Venta")
+    st.header("Registrar una venta")
     df_actualizado = obtener_existencia_actual(df_inventario, df_ventas)
     lista_productos = df_actualizado["Producto"].tolist()
     
